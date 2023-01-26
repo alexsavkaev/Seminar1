@@ -1,6 +1,10 @@
 ﻿Console.Clear();
 Console.Write("Введите первое число от 1 до 7: ");
 int day = int.Parse(Console.ReadLine());
+if(day < 1 || day > 7){
+    Console.WriteLine("Введен неправильный номер");
+    return;
+}
 if(day == 1){
     Console.Write("Понедельник");
 }
