@@ -12,11 +12,15 @@ Console.Write("Введите число 1: ");
 int num1 = int.Parse(Console.ReadLine());
 Console.Write("Введите число 2: ");
 int num2 = int.Parse(Console.ReadLine());
-if(num1 * num1 == num2 || num2 * num2 == num1)
+if(num1 * num1 == num2)
 {
-    Console.Write("Да");
+    Console.Write("Первое число - квадрат второго.");
 }
-else
+else if(num2 * num2 == num1)
 {
-    Console.Write("Нет");
+    Console.Write("Второе число - квадрат первого.");
+}
+else 
+{
+   Console.Write("Числа не являются квадратами друг друга.");
 }
