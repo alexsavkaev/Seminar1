@@ -9,16 +9,11 @@ Console.Clear();
 
 Console.Write("Введите число: ");
 int num = int.Parse(Console.ReadLine());
-if(num % 7 != 0)
+if(num % 7 == 0 && num % 23 == 0)
 {
-    Console.Write("Не Кратно");
-    return;
-}
-if(num % 23 != 0)
-{
-    Console.Write("Не Кратно");
+    Console.Write("Кратно");
 }
 else
 {
-    Console.Write("Кратно");
+    Console.Write("Не кратно");
 }
