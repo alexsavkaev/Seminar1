@@ -9,5 +9,24 @@ Console.Clear();
 
 Console.Write("Введите трёхзначное число: ");
 int num = int.Parse(Console.ReadLine());
-int result = num / 10 % 10;
+// цикл  while для того, чтобы программа не завершалась после ввода не трёхзначного числа
+while (num < 100 || num > 999)
+{
+    Console.Write("Число не трёхзначное, попробуйте ещё раз: ");
+    num = int.Parse(Console.ReadLine());
+}
+    int result = num / 10 % 10;
 Console.Write($"{num} -> {result}");
+
+// Решение через if
+// if (num < 100 || num > 999)
+// {
+//     Console.Write("Число не трёхзначное");
+// }
+// else
+// {
+//     int result = num / 10 % 10;
+// Console.Write($"{num} -> {result}");
+// }
+
+
