@@ -10,11 +10,23 @@
 Console.Clear();
 Console.Write("Введите число: ");
 string num = Convert.ToString(Console.ReadLine());
-if (num.Length < 3)
+// Цикл while для того, чтобы программа не завершалась после ввода не подходящего числа
+while(num.Length < 3)
 {
-    Console.Write("Нет третьей цифры.");
+    Console.WriteLine("Нет третьей цифры, попробуйте еще раз: ");
+    num = Convert.ToString(Console.ReadLine());
 }
-else
-{
-    Console.Write($"{num} -> {num[2]}");
-}
+Console.Write($"{num} -> {num[2]}");
+
+// Решение через if
+// if (num.Length < 3)
+// {
+//     Console.Write("Нет третьей цифры.");
+// }
+// else
+// {
+//     Console.Write($"{num} -> {num[2]}");
+// }
+
+    
+
