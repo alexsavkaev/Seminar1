@@ -3,13 +3,6 @@
 
 
 Console.Clear();
-int Prompt (string message)
-{
-    Console.Write(message);
-    string readInput = Console.ReadLine();
-    int result = int.Parse(readInput);
-    return result;
-}
 int[] GenerateArray(int length, int minValue, int maxValue)
 {
     int[] array = new int[length];
@@ -20,43 +13,46 @@ int[] GenerateArray(int length, int minValue, int maxValue)
     }
     return array;
 }
-void PrintArray(int[] array)
+int[] array = GenerateArray(12, -9, 9);
+int negative = 0;
+int positive = 0;
+foreach (int el in array)
 {
-    Console.Write("[");
-    for(int i = 0; i < array.Length - 1; i++)
-    {
-        Console.Write($"{array[i]}, ");
-    }
-    Console.Write($"{array[array.Length - 1]}");
-    Console.WriteLine("]");
+    positive += el > 0 ? el : 0;
+    negative += el < 0 ? el : 0;
 }
-int length = Prompt("Длина массива: ");
-int min = Prompt("Минимальное значение для диапазона случайного числа: ");
-int max = Prompt("Максимальное значение для диапазона случайного числа: ");
-int[] array = GenerateArray(length, min, max);
-int SortNeg (int[] mass)
-{
-    int sum = 0;
-    for(int i =0; i < mass.Length; i++)
-    {
-        
-        if(mass[i] < 0)
-        sum += mass[i];
-    }
-    return sum;
-}
-int SortPos (int[] mass)
-{
-    int sum = 0;
-    for(int i =0; i < mass.Length; i++)
-    {
-        
-        if(mass[i] > 0)
-        sum += mass[i];
-    }
-    return sum;
-}
-int negative = SortNeg(array);
-int positive = SortPos(array);
-PrintArray(array);
+Console.WriteLine(String.Join(", ", array));
 Console.WriteLine($"Сумма отрицательных чисел: {negative}. Сумма положительных чисел: {positive}");
+
+// int Prompt (string message)
+// {
+//     Console.Write(message);
+//     string readInput = Console.ReadLine();
+//     int result = int.Parse(readInput);
+//     return result;
+// }
+// int length = Prompt("Длина массива: ");
+// int min = Prompt("Минимальное значение для диапазона случайного числа: ");
+// int max = Prompt("Максимальное значение для диапазона случайного числа: ");
+// int SortNeg (int[] mass)
+// {
+//     int sum = 0;
+//     for(int i =0; i < mass.Length; i++)
+//     {
+        
+//         if(mass[i] < 0)
+//         sum += mass[i];
+//     }
+//     return sum;
+// }
+// int SortPos (int[] mass)
+// {
+//     int sum = 0;
+//     for(int i =0; i < mass.Length; i++)
+//     {
+        
+//         if(mass[i] > 0)
+//         sum += mass[i];
+//     }
+//     return sum;
+// }
