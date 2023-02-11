@@ -19,11 +19,15 @@ int[] GetArray(int length, int minValue, int maxValue)      // Функция д
     }
     return array;
 }
-int[] array = GetArray(123, 0, 1000);       // создаём массив с нужными параметрами
-int check = 0;                              // переменная счётчик
-foreach(var el in array)
+int[] array = GetArray(123, 0, 1000);        // создаём массив с нужными параметрами
+int CheckRange(int[] mas)                    // Функция для проверки массива на заданный диапазон
 {
-    check += el >= 10 && el <= 99 ? 1 : 0;  // проверяем каждый элемент массива на нахождение в нужном 
-}                                           // диапазоне и добавляем +1 к счётчику
-Console.WriteLine(String.Join(", ", array));// Выводим сам массив
-Console.WriteLine($"Чисел в диапазоне 10-99: {check}");  // Выводим результат            
+    int check = 0;                          // переменная счётчик   
+    foreach(var el in mas)
+    {
+        check += el >= 10 && el <= 99 ? 1 : 0;  // прибавляем к счётчику +1 за каждый элемент массива, в диапазоне
+    } 
+    return check;
+}                  
+Console.WriteLine(String.Join(", ", array)); // выводим массив
+Console.WriteLine($"Чисел в диапазоне 10-99: {CheckRange(array)}");  // Выводим результат            
