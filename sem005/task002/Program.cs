@@ -21,7 +21,6 @@ int[] RevolveArray(int[] mas)
     return mas;
 }
 int[] array = RndArray(4, -10, 10);
-// RevolveArray(array2);
 Console.WriteLine(String.Join(" ,", array));
 Console.WriteLine(String.Join(" ,", RevolveArray(array)));
 

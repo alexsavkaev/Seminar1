@@ -7,21 +7,21 @@
 // [6 7 3 6]-> 36 21
 
 Console.Clear();
-int Prompt (string message)                                 // Функция для указаний пользователю
+string Prompt (string message)                              // Функция для указаний пользователю
 {
     Console.Write(message);                                 // выводим заданный текст на экран
     string readInput = Console.ReadLine();                  // считываем введённые данные в строку
-    int result = int.Parse(readInput);                      // переводим строку в числа
-    return result;
+    return readInput;
 }
-int[] GetArray(int length, int minValue, int maxValue)      // Функция для создания массива (длина, минимальное значение, максимальное значение)
+int[] StringToArray(string stringArray)                     // Функция для преобразования строки в массив
 {
-    int[] array = new int[length];                          // Создаём массив с длинной length
-        for (int i = 0; i < length; i++)
+    string[] nums = stringArray.Split(" ", StringSplitOptions.RemoveEmptyEntries); // разбиваем строку, оставляя только числа
+    int[] res = new int[nums.Length];                       // создаём числовой массив той же длины что и строка
+    for(int i = 0; i < nums.Length; i++)                    // цикл для перебора элементов строки
     {
-        array[i] = new Random().Next(minValue, maxValue +1);// присваиваем каждому элементу массива значение в переделах заданного диапазона
+        res[i] = int.Parse(nums[i]);                        // каждый элемент переводится в числовое значение
     }
-    return array;
+    return res;
 }
 int[] MultiplyPairs(int[] mas)                              // Функция для умножения пар
 {
@@ -38,9 +38,7 @@ int[] MultiplyPairs(int[] mas)                              // Функция д
     }
     return result;
 }
-int length = Prompt("Введите длину массива: ");
-int min = Prompt("Введите минимальный диапазон массива: ");
-int max = Prompt("Введите максивальный диапазон массива: ");
-int[] array = GetArray(length, min, max);
+string el = Prompt("Введите элементы массива через пробел: ");
+int[] array = StringToArray(el);
 Console.WriteLine(String.Join(", ", array));                // выводим исходный массив
 Console.WriteLine(String.Join(", ", MultiplyPairs(array))); // выводим результат
