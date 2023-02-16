@@ -9,6 +9,14 @@
 
 using System;
 using static System.Console;
+Console.Clear();
+int Prompt (string message)                                 // Функция для указаний пользователю
+{
+    Write(message);                                 // выводим заданный текст на экран
+    string readInput = ReadLine();                  // считываем введённые данные в строку
+    int result = int.Parse(readInput);                      // переводим строку в числа
+    return result;
+}
 int[,] GetArray(int m, int n)
 {
     int[,] result = new int[m, n];
@@ -27,8 +35,7 @@ int DiagonalSumm(int[,] inArray)
     for (int i = 0; i < inArray.GetLength(0); i++)
     {
         for (int j = 0; j < inArray.GetLength(1); j++)
-        {
-            
+        {            
             if(i == j)
             {
                 sum += inArray[i,j];
@@ -48,7 +55,9 @@ void PrintArray(int[,] inArray)
         WriteLine();
     }
 }
-int[,] mas = GetArray(5,5);
+int line = Prompt("Введите количество строк: ");
+int column = Prompt("Введите количество столбцов: ");
+int[,] mas = GetArray(line, column);
 PrintArray(mas);
 WriteLine();
-WriteLine($"Сумма главной диагонали равноа: {DiagonalSumm(mas)}");
+WriteLine($"Сумма главной диагонали равна: {DiagonalSumm(mas)}");
