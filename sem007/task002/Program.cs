@@ -35,5 +35,5 @@ void PrintArray(int[,] inArray)
         WriteLine();
     }
 }
-int[,] mas = GetArray(3,4);
+int[,] mas = GetArray(5,6);
 PrintArray(mas);
