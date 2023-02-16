@@ -10,7 +10,7 @@
 using System;
 using static System.Console;
 Console.Clear();
-int Prompt (string message)                                 // Функция для указаний пользователю
+int Prompt(string message)                                 // Функция для указаний пользователю
 {
     Write(message);                                 // выводим заданный текст на экран
     string readInput = ReadLine();                  // считываем введённые данные в строку
@@ -32,10 +32,20 @@ int[,] GetArray(int m, int n)
 int DiagonalSumm(int[,] inArray)
 {
     int sum = 0;
+    int length = inArray.GetLength(0) < inArray.GetLength(1) ? inArray.GetLength(0) : inArray.GetLength(1);
+    for (int i = 0; i < inArray.GetLength(0); i++)
+    {
+        sum += inArray[i, i];
+    }
+    return sum;
+}
+int DiagSum(int[,] inArray)
+{
+    int sum =0;
     for (int i = 0; i < inArray.GetLength(0); i++)
     {
         for (int j = 0; j < inArray.GetLength(1); j++)
-        {            
+        {
             if(i == j)
             {
                 sum += inArray[i,j];
@@ -50,7 +60,7 @@ void PrintArray(int[,] inArray)
     {
         for (int j = 0; j < inArray.GetLength(1); j++)
         {
-            Write($"{inArray[i,j]} ");
+            Write($"{inArray[i, j]} ");
         }
         WriteLine();
     }
@@ -61,3 +71,4 @@ int[,] mas = GetArray(line, column);
 PrintArray(mas);
 WriteLine();
 WriteLine($"Сумма главной диагонали равна: {DiagonalSumm(mas)}");
+WriteLine($"Сумма главной диагонали равна: {DiagSum(mas)}");
