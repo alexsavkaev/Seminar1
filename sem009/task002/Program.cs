@@ -20,6 +20,6 @@ string PrintNumbers(int start, int end)
         return start.ToString();
     }
     
-    string s = PrintNumbers(start,end - 1) + ' ' + end.ToString();
+    string s = PrintNumbers(start, end - 1) + ' ' + end.ToString();
     return (s);
 }
