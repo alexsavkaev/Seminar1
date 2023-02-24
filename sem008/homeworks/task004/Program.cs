@@ -7,49 +7,50 @@
 // 26(1,0,1) 55(1,1,1)
 using System;
 using static System.Console;
-Console.Clear();
-int Prompt(string message)                                  // Функция для ввода переменных
+Clear();
+int Prompt(string message)                                    // Функция для ввода переменных
 {
-    Write(message);                                         // выводим заданный текст на экран
-    string readInput = ReadLine();                          // считываем введённые данные в строку
-    int result = int.Parse(readInput);                      // переводим строку в числа
+    Write(message);                                           
+    string readInput = ReadLine();                            
+    int result = int.Parse(readInput);                        
     return result;
 }
-int[,,] GetBlock(int tables, int lines, int columns) // Функция для создания массива по вводимым требованиям
+int[,,] GetBlockOfUniques(int tables, int lines, int columns) // Функция для создания массива по вводимым требованиям
 {
-    int[] numbers = new int[90];
+    int[] numbers = new int[90];                              // Создаём пул чисел по порядку 10-99
     for (int i = 0; i < numbers.Length; i++)
     {
         numbers[i] = 10 + i;
     }
-    int[,,] result = new int[tables, lines, columns];
+    int[,,] result = new int[tables, lines, columns];         // Создвём массив по введённым параметрам.
     for (int i = 0; i < tables; i++)
     {
         for (int j = 0; j < lines; j++)
         {
             for (int k = 0; k < columns; k++)
             {
-                int t = new Random().Next(0, 90); 
-                if (numbers[t] != 0)
-                {
-                    result[i, j, k] = numbers[t];
-                    numbers[t] = 0;
+                int t = new Random().Next(0, 90);             // Создаём случайное число
+                if (numbers[t] != 0)                          // если элемент пула не обнулён:
+                {                                             //
+                    result[i, j, k] = numbers[t];             // присваиваем каждому элементу массива случайный элемент из пула чисел
+                    numbers[t] = 0;                           // обнуляем элемент в пуле чисел
                 }
                 else
                 {
-                    while (numbers[t] == 0)
+                    while (numbers[t] == 0)                   // Если элемент уже обнулён (или находится в череде обнулённых):
                     {
-                        t = new Random().Next(0, 90);
+                        if (t == numbers.Length - 1) t = 0;   // если это последний элемент массива, обнуляем t
+                        t++;                                  // и движемся по возрастанию
                     }
-                    result[i, j, k] = numbers[t];
-                    numbers[t] = 0;
+                    result[i, j, k] = numbers[t];             // наткнувшись на необнулённый элемент, забираем его в массив
+                    numbers[t] = 0;                           // и обнуляем
                 }
             }
         }
     }
     return result;
 }
-void PrintBlock(int[,,] inArray)                                     // Функция для вывода массива
+void PrintBlock(int[,,] inArray)                              // Функция для вывода массива
 {
     for (int i = 0; i < inArray.GetLength(0); i++)
     {
@@ -59,22 +60,10 @@ void PrintBlock(int[,,] inArray)                                     // Функ
                 Write($"{inArray[i, j, k]}({i},{j},{k}) ");
             WriteLine();
         }
-        // WriteLine();
     }
 }
-void PrintArray(int[,,] inArray)                                     // Функция для вывода массива
-{
-    for (int i = 0; i < inArray.GetLength(0); i++)
-    {
-        for (int j = 0; j < inArray.GetLength(1); j++)
-        {
-            for (int k = 0; k < inArray.GetLength(2); k++)
-                Write($"{inArray[i, j, k]} ");
-            WriteLine();
-        }
-        // WriteLine();
-    }
-}
+
+
 
 int tables = Prompt("Введите количество таблиц: ");
 int lines = Prompt("Введите количество строк в таблицах: ");
@@ -85,7 +74,8 @@ if (tables * lines * columns > 90)
 }
 else
 {
-    int[,,] block = GetBlock(tables, lines, columns);
+    int[,,] block = GetBlockOfUniques(tables, lines, columns);
     PrintBlock(block);
-    PrintArray(block);
 }
+
+
