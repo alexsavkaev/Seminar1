@@ -10,12 +10,11 @@ Clear();
 Write("Введите N: ");
 int n = int.Parse(ReadLine());
 WriteLine(PrintNumbers(n));
-string PrintNumbers(int end)
+string PrintNumbers(int number)
 {
-    if (end == 1)
+    if (number == 1)
     {
-        //Console.WriteLine(end);
         return "1";
     }
-    return (end.ToString() + ' ' + PrintNumbers(end - 1));
+    return (number.ToString() + ' ' + PrintNumbers(number - 1));
 }
