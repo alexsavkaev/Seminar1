@@ -28,7 +28,7 @@ void PrintArray(int[,] inArray)                                     // Функ�
     {
         for (int j = 0; j < inArray.GetLength(1); j++)
         {
-            Write($"{inArray[i, j]} ");                   // Вывод числа с одним знаком после запятой
+            Write($"{inArray[i, j]} ");                   
         }
         WriteLine();
     }
